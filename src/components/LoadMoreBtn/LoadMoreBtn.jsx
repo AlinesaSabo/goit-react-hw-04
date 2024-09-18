@@ -1,7 +1,11 @@
+import s from "./LoadMoreBtn.module.css";
+
 const LoadMoreBtn = ({ handleChangePage }) => {
   return (
-    <div>
-      <button onClick={handleChangePage}>Load more</button>
+    <div className={s.container}>
+      <button onClick={handleChangePage} className={s.buttom}>
+        Load more
+      </button>
     </div>
   );
 };
