@@ -7,6 +7,7 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "./components/Loader/Loader";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import ImageModal from "./components/ImageModal/ImageModal";
+import { useToggle } from "./hooks/useToggle";
 
 const App = () => {
   const [articles, setArticles] = useState([]);
@@ -14,8 +15,13 @@ const App = () => {
   const [isError, setIsError] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+
+  const {
+    isOpen: modalIsOpen,
+    open: openModal,
+    close: closeModal,
+  } = useToggle(false);
 
   useEffect(() => {
     if (!query) {
@@ -46,21 +52,16 @@ const App = () => {
     setPage(1);
   };
 
-  const openModal = (imageSrc) => {
+  const handleImageClick = (imageSrc) => {
     setSelectedImage(imageSrc);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setSelectedImage("");
+    openModal();
   };
 
   return (
     <div>
       <SearchBar handleSetQuery={handleSetQuery} />
       {articles.length > 0 && (
-        <ImageGallery articles={articles} onImageClick={openModal} />
+        <ImageGallery articles={articles} onImageClick={handleImageClick} />
       )}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}

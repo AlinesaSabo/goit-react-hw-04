@@ -4,11 +4,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 800px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  background: rgba(189, 168, 168, 0.233);
+  padding: 30px;
+  border-radius: 12px;
   outline: none;
 }
 
@@ -18,21 +18,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .modal_image {
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 .close_btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 6px;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
-  color: #333;
+  color: #999999;
 }
