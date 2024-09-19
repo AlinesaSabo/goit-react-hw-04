@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-export const useToggle = (initialState = false) => {
-  const [isOpen, setIsOpen] = useState(initialState);
+export const useToggle = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
-  const open = () => setIsOpen(true);
-  const close = () => setIsOpen(false);
-
-  return { isOpen, open, close };
+  return { isOpen, openModal, closeModal };
 };

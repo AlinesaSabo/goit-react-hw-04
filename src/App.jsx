@@ -16,12 +16,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
-
-  const {
-    isOpen: modalIsOpen,
-    open: openModal,
-    close: closeModal,
-  } = useToggle(false);
+  const { isOpen, openModal, closeModal } = useToggle();
 
   useEffect(() => {
     if (!query) {
@@ -69,7 +64,7 @@ const App = () => {
         <LoadMoreBtn handleChangePage={handleChangePage} />
       )}
       <ImageModal
-        isOpen={modalIsOpen}
+        isOpen={isOpen}
         onRequestClose={closeModal}
         imageSrc={selectedImage}
       />
